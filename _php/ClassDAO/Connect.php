@@ -10,12 +10,9 @@
 		public function conectar() {
 			try{
 				$this->dbname = "u438118853_bltm";
-				//$this->host = "mysql.hostinger.com.br";
 				$this->host = "localhost";
 				$this->user = "root";
-				//$this->user = "u438118853_bltus";
 				$this->passwd = "123456";
-				//$this->passwd = "n3w#b%ll3t1mdb";
 				
 				$param = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES UTF8");
 				
