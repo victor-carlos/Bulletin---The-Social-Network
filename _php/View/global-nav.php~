@@ -1,0 +1,22 @@
+	<body>
+		<nav class="global-nav">
+			
+			<a href="base005.html" >
+				<div id="bulletim" class="blue">
+					<span>b</span>
+				</div>
+			</a>
+			
+			<div class="global-main-menu">
+				<ul>
+					<li><a href="index.php">Pesquisar Pessoas</a></li>
+					<li><a href="index.html">Boletins</a></li>
+					<li><a href="index.html">Configurações</a></li>
+					<li><a href="index.html">Sair</a></li>
+				</ul>
+			</div>
+				
+				<div class="user-name">Bulletin<br /> Sua rede social</div>
+				<div id="scrollUp" onclick="$('.global-nav').css('height', '100px');$('.container, #scrollUp, .user-name').css('display', 'none');$('.container').fadeIn('slow')"></div>
+				
+		</nav>

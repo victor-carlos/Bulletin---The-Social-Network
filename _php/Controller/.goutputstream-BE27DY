@@ -1,0 +1,265 @@
+<?php
+	require("_php/Model/Publicacao.php");
+	//require("_php/ClassDAO/Connect.php");
+	
+	class CtrlPublicacao{
+		public function publicarTextoFoto($id_usuario, $post, $cor, $nome_foto) {
+			$con = new Connect();
+			$con->conectar();
+			$id_publicacao;
+			$count = 0;
+			$id_publicacao = 0;
+			
+			if(!is_bool($con->pdo)) {
+				$result = $con->pdo->prepare("INSERT INTO publicacao (cor, texto, id_usuario, nome_foto) VALUES ('$cor', '$post', ".$id_usuario.", '".$nome_foto."');");
+				$result->execute();
+				
+				$result1 = $con->pdo->prepare("SELECT id FROM publicacao WHERE texto = '$post' AND nome_foto = '$nome_foto';");
+				$result1->execute();
+				
+				while ($linha = $result1->fetch(PDO::FETCH_ASSOC)){
+					$id_publicacao = $linha['id'];
+				}
+				
+				$result2 = $con->pdo->prepare("INSERT INTO visto (visto, id_publicacao, id_usuario) VALUES (false, {$id_publicacao}, {$id_usuario})");
+				$result2->execute();
+				
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public function publicarTextoVideo($id_usuario, $post, $cor, $id_video) {
+			$con = new Connect();
+			$con->conectar();
+			
+			if(!is_bool($con->pdo)) {
+				$result = $con->pdo->prepare("INSERT INTO publicacao (cor, texto, id_video, id_usuario) VALUES ('$cor', '$post', '$id_video', '$id_usuario');");
+				$result->execute();
+				
+				$result1 = $con->pdo->prepare("SELECT id FROM publicacao WHERE texto = '$post' AND nome_foto = '$nome_foto';");
+				$result1->execute();
+				
+				while ($linha = $result1->fetch(PDO::FETCH_ASSOC)){
+					$id_publicacao = $linha['id'];
+				}
+				
+				$result2 = $con->pdo->prepare("INSERT INTO visto (visto, id_publicacao, id_usuario) VALUES (false, {$id_publicacao}, {$id_usuario})");
+				$result2->execute();
+				
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public function publicarTexto($id_usuario, $post, $cor) {
+			$con = new Connect();
+			$con->conectar();
+			
+			if(!is_bool($con->pdo)) {
+				$result = $con->pdo->prepare("INSERT INTO publicacao (cor, texto, id_usuario) VALUES ('$cor', '$post', '$id_usuario');");
+				$result->execute();
+				
+				$result1 = $con->pdo->prepare("SELECT id FROM publicacao WHERE texto = '$post' AND nome_foto = '$nome_foto';");
+				$result1->execute();
+				
+				while ($linha = $result1->fetch(PDO::FETCH_ASSOC)){
+					$id_publicacao = $linha['id'];
+				}
+				
+				$result2 = $con->pdo->prepare("INSERT INTO visto (visto, id_publicacao, id_usuario) VALUES (false, {$id_publicacao}, {$id_usuario})");
+				$result2->execute();
+				
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public function marcarPub($id_publicacao, $id_usuario) {
+			$con = new Connect();
+			$con->conectar();
+			$id_marcacao = 0;
+			
+			if(!is_bool($con->pdo)) {
+				$result = $con->pdo->prepare("SELECT id FROM marcacao WHERE id_usuario = {$id_usuario} AND id_publicacao = {$id_publicacao};");
+				$result->execute();
+				
+				while ($linha = $result->fetch(PDO::FETCH_ASSOC)){
+					$id_marcacao = $linha['id'];
+				}
+				
+				if($id_marcacao > 0) {
+					$result1 = $con->pdo->prepare("DELETE FROM marcacao WHERE id_usuario = {$id_usuario} AND id_publicacao = {$id_publicacao};");
+					$result1->execute();
+				}else {
+					$result1 = $con->pdo->prepare("INSERT INTO marcacao (marcacao, id_usuario, id_publicacao) VALUES (true, {$id_usuario}, {$id_publicacao})");
+					$result1->execute();
+				}
+				
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public function bulletinNaoVistos($id) {
+			$con = new Connect();
+			$con->conectar();
+			$cont = 0;
+			
+			if(!is_bool($con->pdo)) {
+				$result = $con->pdo->prepare("SELECT visto FROM visto WHERE id_usuario = {$id};");
+				$result->execute();
+				
+				while ($linha = $result->fetch(PDO::FETCH_ASSOC)){
+					if($linha['visto'] == false){
+						$cont++;
+					}
+				}
+			}
+			return $cont;
+		}
+		
+		public function listarPosts($id) {
+			$con = new Connect();
+			$con->conectar();
+			$count = 0;
+			$id_amigo = "";
+			$id_foto = "";
+			$id_ = "";
+			$posts = "";
+			$foto_perfil = "";
+			$nome = "";
+			$sobrenome = "";
+			$nickname = "";
+			$pais = "";
+			$nome_foto;
+			$id_post = "";
+			
+			if(!is_bool($con->pdo)) {
+				$result = $con->pdo->prepare("SELECT foto_perfil, nome, sobrenome, nickname, pais FROM usuario WHERE id = '".$id."';");
+				$result->execute();
+				
+				while ($linha = $result->fetch(PDO::FETCH_ASSOC)){
+					$foto_perfil = $linha['foto_perfil'];
+					$nome = $linha['nome'];
+					$sobrenome = $linha['sobrenome'];
+					$nickname = $linha['nickname'];
+					$pais = $linha['pais'];
+				}
+				
+				$result1 = $con->pdo->prepare("SELECT * FROM amigo WHERE id_usuario = '$id' AND confirmado = true;");
+				$result1->execute();
+				
+				$count = 0;
+				while ($linha = $result1->fetch(PDO::FETCH_ASSOC)){
+					if($count == 0){
+						$id_amigo .= " publicacao.id_usuario = " . $linha["id_amigo"] . " ";
+					
+					}else {
+						$id_amigo .= " AND publicacao.id_usuario = " . $linha["id_amigo"] . " ";
+					}
+					
+					$count++;
+				}
+				
+				$result2 = $con->pdo->query("SELECT id FROM publicacao WHERE " . $id_amigo . " ORDER BY data DESC;");
+				$result2->execute();
+				
+				$cont = 0;
+				while ($linha = $result2->fetch(PDO::FETCH_ASSOC)){
+					if($cont == 0){
+						$id_post .= " id_publicacao = " . $linha['id'];
+					}else {
+						$id_post .= " AND id_publicacao = " . $linha['id'];
+					}
+					$cont++;
+				}
+				
+				$result3 = $con->pdo->query("SELECT id_publicacao, marcacao FROM marcacao WHERE {$id_post};");
+				$result3->execute();
+				
+				$id_post[0] = 0;
+				
+				while ($linha = $result3->fetch(PDO::FETCH_ASSOC)){
+					$id_post[$linha['id_publicacao']] = $id_post[$linha['id_publicacao']] + $linha['marcacao'];
+					
+				}
+				
+				$result4 = $con->pdo->query("SELECT * FROM publicacao WHERE " . $id_amigo . " ORDER BY data DESC;");
+				$result4->execute();
+				
+				$cont = 2;
+				
+				while ($linha = $result4->fetch(PDO::FETCH_ASSOC)){
+					
+					$posts .= '<article class="content '.$linha["cor"].'">
+						<div class="identification">
+							<form action="" method="post" class="form">
+								<div class="marcacoes">'.$id_post[$linha["id"]].'</div>
+								<input type="hidden" name="id_post" value="'.$linha['id'].'" />
+								<input type="submit" name="check" value="" class="marcar1" />
+							</form>
+							<img src="'.$foto_perfil.'" alt="">
+							<a href="index.php?ref=Perfil&addr='.$_SESSION["endereco"].'" >'.$nome.' '.$sobrenome.' ('.$nickname.') <br> '.$linha["data"].' - Lugar - '.$pais.' </a>
+						</div>
+						
+						<div class="bulletin">
+						<p>'.$linha["texto"].'</p>';
+						if(strrpos($linha['nome_foto'], "media") > 0) {
+					$posts .='<video class="video-page" controls="controls">
+							<source src="media/video/01.mp4" type="video/mp4" />
+							<!--Suportado em IE9, Chrome 6 e Safari 5 --> 
+							O seu navegador não suporta a tag vídeo
+						</video>
+						';}
+						
+					if(strrpos($linha['nome_foto'], "img") > 0) {
+						$posts .='<a href="'.$linha["nome_foto"].'" target="_blank" >
+							<figure>
+								<img src="'.$linha["nome_foto"].'" alt="">
+								<figcaption>Olá! Meu nome é Victor.</figcaption>
+							</figure>
+						</a>
+						';}
+					
+						
+					$posts .='</div>
+							<div>
+								<form class="bulletin">
+									<fieldset>
+										<legend>Comentar</legend>
+										<span class="btn4" onclick="abrirAba('.$cont.');"></span>
+										<div class="hide" style="display: none;">
+											<textarea placeholder="Comente algo"></textarea>
+											
+											<br />
+											<input class="float-right" type="submit" value="Comentar" />
+										</div>
+									</fieldset>
+									<fieldset>
+										<legend>Comentários: </legend>
+										
+									</fieldset>
+								</form>
+							</div>
+						<div style="clear: both;"></div>
+					</article>';
+					$cont++;
+					$cont++;
+					}
+					
+					$result5 = $con->pdo->prepare("UPDATE visto SET visto = true WHERE id_usuario = {$id};");
+					$result5->execute();
+				
+				}
+				return $posts;
+			}
+			
+		}
+	
+	
+?> 

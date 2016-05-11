@@ -1,0 +1,92 @@
+<?php
+	class Usuario{
+		private $id;
+		private $nome;
+		private $sobrenome;
+		private $dt_nasc;
+		private $email;
+		private $endereco;
+		private $sexo;
+		private $senha;
+		
+		/* Set */
+		public function setId($id) {$this->id = $id;}
+		
+		public function setNome($nome) {
+			if($nome != "") {
+				$this->nome = $nome;
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public function setSobrenome($sobrenome) {
+			if($sobrenome != "") {
+				$this->sobrenome = $sobrenome;
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public function setDtNasc($dt_nasc, $country) {
+			$arr_dt_nasc = explode("/", $dt_nasc);
+			if(count($arr_dt_nasc) == 3 && $arr_dt_nasc[0] <= 31 && $arr_dt_nasc[1] <= 12){
+				
+				//Armazena no padrão de banco de dados
+				$this->dt_nasc = $arr_dt_nasc[2]."-".$arr_dt_nasc[1]."-".$arr_dt_nasc[0];
+				
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public function setEmail($email) {
+			if($email != "" && (count(explode("@", $email))) == 1){
+				$this->email = $email;
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public function setEndereco($endereco) {
+			if($endereco != "") {
+				$this->endereco = $endereco;
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public function setSexo($sexo) {
+			if($sexo != "") {
+				$this->sexo = $sexo;
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public function setSenha($senha) {
+			if($senha != "") {
+				$this->senha = MD5($senha);
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		/* Get */
+		public function getID() {return $this->id;}
+		public function getNome() {return $this->nome;}
+		public function getSobrenome() {return $this->sobrenome;}
+		public function getDtNasc() {return $this->dt_nasc;}
+		public function getEmail() {return $this->email;}
+		public function getEndereco() {return $this->endereco;}
+		public function getSexo() {return $this->sexo;}
+		public function getSenha() {return $this->senha;}
+	}
+?>

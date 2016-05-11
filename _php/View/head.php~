@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<!-- Robots -->
+	<meta name="robots" content="index, follow">
+	<!-- JQuery -->
+	<script src="_js/jquery.min.js"></script>
+	
+	<!-- Meta Infos -->
+	<meta name="description" content="" />
+	<meta name="author" content="Victor Carlos" />
+	<meta http-equiv="content-language" content="pt-br">
+	<meta name="reply-to" content="victor.carlos1395@gmail.com">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="keywords" content=""/>
+	
+	<!-- Title -->
+	<title><?php echo $ref; ?></title>
+
+	<!-- Farvicon -->
+	<link href="_img/farvicon.png" rel="shortcut icon">
+	
+	<!-- Custom -->
+	<link href="_css/style.css" rel="stylesheet" />
+	<script src="_js/script.js" ></script>
+
+</head>

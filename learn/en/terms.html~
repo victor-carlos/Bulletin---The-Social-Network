@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-br" dir="ltr">
+	<head>
+		<!-- Robots -->
+		<meta name="robots" content="index, follow">
+		
+		<!-- JQuery -->
+		<script src="../../_js/jquery.js"></script>
+		
+		<!-- Meta Infos -->
+		<meta name="description" content="" />
+		<meta name="author" content="Victor Carlos" />
+		<meta http-equiv="content-language" content="pt-br">
+		<meta name="reply-to" content="victor.carlos1395@gmail.com">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="keywords" content=""/>
+		
+		<title>Termos de Uso</title>
+		
+		<!-- Favicon -->
+		<link href="../../_img/favicon.png" rel="shortcut icon">
+		
+		<!-- Custom -->
+		<link href="../_css/style.css" rel="stylesheet" />
+		<script src="../_js/script.js" ></script>
+	</head>
+	<body>
+		<header class="global-nav">
+			<div class="logo"><a href="../../index.php" >bulletin</a>&nbsp;&nbsp;</div>
+			<nav class="global-menu">
+			<div class="btn-0"></div>
+				<ul>
+					<li><a href="index.html" >About the Bulletin</a></li>
+					<li><a href="terms.html" >Terms of use</a></li>
+					<li><a href="privacy.html" >Privacy Policy</a></li>
+					<li><a href="../../index.php" >Home Page</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section class="container">
+			<article>
+				<header class="title">
+					<h1>Terms of use</h1>
+					<h3>The base to be social</h3>
+				</header>
+				<div class="wrap">
+					<a name="Be Authentic" ></a>
+					<h1>Be Authentic</h1>
+					<p>You can only create one account per email. Remember, you can have as many friends as you want, provided you know manage them.</p>
+				</div>
+				
+				<div class="wrap">
+					<a name="Respect" ></a>
+					<h1>Behave yourself and respect your friends and people you do not know</h1>
+					<p>Complaints functions have not yet been developed. But this does not stop me to intervene in publications and offensive pictures and that hurt Human Rights. If this happens, your account may be blocked.</p>
+				</div>
+				
+				<div class="wrap">
+					<a name="Know" ></a>
+					<h1>Know who you want</h1>
+					<p>There not are regional blocks for those who are, for example, Brazil, United States, Portugal, Canada ... Discover and share your culture!</p>
+				</div>
+				
+				<div class="wrap">
+					<a name="Collaborate" ></a>
+					<h1>Collaborate</h1>
+					<p>So far there is only one person who makes the maintenance of social network (I, Victor Carlos)</p>
+					<p>If you find any bugs, please contact my email: victor.carlos1395@gmail.com</p>
+					<p>Answer if I should open the project source code as well. This is important!</p>
+				</div>
+				
+				
+			</article>
+		</section>
+		<footer class="footer">
+			<div class="float-right">Copyright &copy; 2015 - 2016 | Todos os direitos reservados à <a href="#">OverHead</a></div>
+			<div class="float-left">
+				<p>-- Menu --</p>
+				<ul>
+					<li><a href="../../index.php">Home Page</a></li>
+					<li><a href="privacy.html">Privacy Policy</a></li>
+					<li><a href="privacy.html#Cookies" >Use of Cookies</a></li>
+					<li><a href="terms.html">Terms of use</a></li>
+					<li><a href="index.html">About the Bulletin</a></li>
+				</ul>
+				
+			</div>
+			<div style="clear: both;"></div>
+		</footer>
+	</body>
+</html>

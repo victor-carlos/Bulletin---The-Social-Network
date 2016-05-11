@@ -1,0 +1,92 @@
+		<section class="wrap">
+			<div class="container about">
+				
+				<article class="content white">
+					<form class="bulletin" action="" method="post">
+						<fieldset>
+							<legend>Dados Pessoais</legend>
+							<label><p>Nome: </p></label>
+							<input type="text" name="nome" value="<?php echo (isset($_SESSION['nome']))?$_SESSION['nome']:''; ?>" required="required" /><br />
+							
+							<label><p>Sobrenome: </p></label>
+							<input type="text" name="sobrenome" value="<?php echo (isset($_SESSION['sobrenome']))?$_SESSION['sobrenome']:''; ?>" required="required" /><br />
+							
+							<label><p>Apelido: </p></label>
+							<input type="text" name="nickname" value="<?php echo (isset($_SESSION['nickname']))?$_SESSION['nickname']:''; ?>" /><br />
+							
+							<label><p>País: </p></label>
+							<input type="text" name="pais" value="<?php echo (isset($_SESSION['pais']))?$_SESSION['pais']:''; ?>" required="required" /><br />
+							
+							<label><p>Estado ou Província: </p></label>
+							<input type="text" name="estado" value="<?php echo (isset($_SESSION['estado']))?$_SESSION['estado']:''; ?>" required="required" /><br />
+							
+							<label><p>Data de Nascimento: </p></label>
+							<input type="date" name="data-nasc" value="<?php echo (isset($_SESSION['data_nasc']))?$_SESSION['data_nasc']:''; ?>" /><br />
+							
+							<label><p>Sexo: </p></label>
+							<input type="radio" name="sexo" value="Masculino" checked="" /><label>Masculino</label><br />
+							<input type="radio" name="sexo" value="Feminino" /><label>Feminino</label>
+							<br /><br />
+							
+							<label><p>Interesses: </p></label>
+							<input type="checkbox" name="network" <?php echo ($ctrlUsuario->getInteresses('Network'))?'checked=""':''; ?> ><label>Network</label><br />
+							<input type="checkbox" name="amizade" <?php echo ($ctrlUsuario->getInteresses('Amizade'))?'checked=""':''; ?> ><label>Amizade</label><br />
+							<input type="checkbox" name="relacionamento" <?php echo ($ctrlUsuario->getInteresses('Um relacionamento'))?'checked=""':''; ?> ><label>Um relacionamento</label><br />
+							<input type="checkbox" name="namoro" <?php echo ($ctrlUsuario->getInteresses('Namoro'))?'checked=""':''; ?> ><label>Namoro</label><br />
+							<br /><br />
+							
+							<label for="linguagem"><p>Linguagem: </p></label>
+							<input type="radio" name="linguagem" value="pt-BR" <?php echo ($ctrlUsuario->getLinguagem() == "pt-BR")?'checked=""':''; ?> />Português<br />
+							<input type="radio" name="linguagem" value="en-US" <?php echo ($ctrlUsuario->getLinguagem() == "en-US")?'checked=""':''; ?> />English<br /><br />
+							
+							<input type="submit" class="float-right" name="atualiza-dados-pessoais" value="Atualizar Dados Pessoais" /> 
+						</fieldset>
+					</form>
+					<form class="bulletin" action="" method="post">
+						<fieldset>
+							<legend>Fale sobre você</legend>
+							<textarea name="sobre" placeholder="Esta será a sua apresentação." required="required"><?php echo $ctrlUsuario->apresentacao($_SESSION['endereco'])?></textarea>
+							<br /> 
+							<input type="submit" class="float-right" name="atualizar-sobre" value="Atualizar Sobre" /> 
+						</fieldset>
+					</form>
+					<form class="bulletin" action="" method="post">
+						<fieldset>
+							<legend>Autenticação</legend>
+							
+							<label><p>Antiga Senha: </p></label>
+							<input type="password" name="antiga-password" required="required" /><br />
+							
+							<label><p>Nova Senha: </p></label>
+							<input type="password" name="password1" required="required" /><br />
+							
+							<label><p>Repetir senha: </p></label>
+							<input type="password" name="password2" required="required" /><br />
+							
+							<input type="submit" class="float-right" name="atualizar-auth" value="Atualizar Autenticação" />
+						</fieldset>
+					</form>
+					<form class="bulletin" action="" method="post" enctype="multipart/form-data" >
+						<fieldset>
+							<legend>Foto do Perfil</legend>
+							<input type="file" name="foto_perfil" /><br />
+							
+							<input type="submit" class="float-right" name="atualizar-foto-perfil" value="Atualizar Foto" />
+						</fieldset>
+					</form>
+					<form class="bulletin" action="" method="post" enctype="multipart/form-data" >
+						<fieldset>
+							<legend>Capa do Perfil</legend>
+							<input type="file" name="foto_capa" /><br />
+							
+							<input type="submit" class="float-right" name="atualizar-foto-capa" value="Atualizar Foto" />
+						</fieldset>
+						
+						<br /><br />
+						<div style="color: red;"><?php echo (isset($_SESSION["erros"]))?$_SESSION["erros"]:""; $_SESSION["erros"] = "";?></div>
+					</form>
+					<div style="clear: both;"></div>
+				</article>
+				
+			</div>
+		</section>

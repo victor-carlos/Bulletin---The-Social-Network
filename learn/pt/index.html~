@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-br" dir="ltr">
+	<head>
+		<!-- Robots -->
+		<meta name="robots" content="index, follow">
+		
+		<!-- JQuery -->
+		<script src="../../_js/jquery.js"></script>
+		
+		<!-- Meta Infos -->
+		<meta name="description" content="" />
+		<meta name="author" content="Victor Carlos" />
+		<meta http-equiv="content-language" content="pt-br">
+		<meta name="reply-to" content="victor.carlos1395@gmail.com">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="keywords" content=""/>
+		
+		<title>Sobre o Bulletin</title>
+		
+		<!-- Favicon -->
+		<link href="../../_img/favicon.png" rel="shortcut icon">
+		
+		<!-- Custom -->
+		<link href="../_css/style.css" rel="stylesheet" />
+		<script src="../_js/script.js" ></script>
+	</head>
+	<body>
+		<header class="global-nav">
+			<div class="logo"><a href="../../index.php" >bulletin</a>&nbsp;&nbsp;</div>
+			<nav class="global-menu">
+			<div class="btn-0"></div>
+				<ul>
+					<li><a href="index.html" >Sobre o Bulletin</a></li>
+					<li><a href="termos.html" >Termos de Uso</a></li>
+					<li><a href="privacidade.html" >Políticas de Privacidade</a></li>
+					<li><a href="../../index.php" >Página Inicial</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section class="container">
+			<article>
+				<header class="title">
+					<h1>Sobre o Bulletin</h1>
+					<h3>Do BrainStorm ao Pré-Alfa 0.7.1-2</h3>
+				</header>
+				<div class="wrap">
+					<a name="O layout" ></a>
+					<h1>O layout</h1>
+					<p>O layout foi finalizado no dia 28 de Fevereiro de 2016; foi feito em HTML, CSS e Javascript com JQUERY. Eu <a href="https://br.linkedin.com/in/victor-carlos-671537b4" >Victor Carlos</a>, desenvolvedor da rede social, apresentei o mesmo para o meu tio que é da área de TI. Ele apontou os erros de design e fiquei em duvida: Eu faço ou não faço? Decidi fazer, fatiando o site inteiro e passando para o PHP.</p>
+				</div>
+				
+				<div class="wrap">
+					<a name="O Desenvolvimento" ></a>
+					<h1>O Desenvolvimento</h1>
+					<p>Eu começei a fatiar todo o projeto, colocando QueryString e o Banco de Dados já estava desenhado no papel. Depois de todo esse trabalho, com o banco criado, começei a criar as classes, modelos e controladores, junto com o driver de conexão. Estava decidido que o projeto seria no modelo MVC.</p>
+					<p>Testes básicos foram feitos, criando contas fictícias e desenvolvendo as funcionalidades.</p>
+				</div>
+				
+				<div class="wrap">
+					<a name="A Versão Pré Alfa" ></a>
+					<h1>A Versão Pré Alfa</h1>
+					<p>O término foi nesta sexta feira, dia 29 de Abril. As funções básicas de amizade, publicação, notificação e a marcação estão funcionando. Podem existir alguns bugs, mas, o que importa é que existe mais uma opção na Web. Ah, e o AJAX não foi implementado ainda.</p>
+					<p>As próximas funcionalidades a serem desenvolvidas serão:</p>
+					
+					<ul>
+						<li>AJAX</li>
+						<li>Conversa</li>
+						<li>Fotos</li>
+						<li>Publicação de vídeos</li>
+						<li>Criação de Páginas</li>
+						<li>ETC...</li>
+					</ul>
+				</div>
+				
+				<div class="wrap">
+					<a name="O Desenvolvedor" ></a>
+					<h1>O Desenvolvedor</h1>
+					<p>Como foi dito acima, meu nome é <a href="https://br.linkedin.com/in/victor-carlos-671537b4" >Victor Carlos</a>, conhecido também por OverHead.</p>
+					<p>Tudo começou com um PC: K6-2/500 com 256MB RAM e HD Fujitsu de 10GB. Aprendi a consertar meu próprio computador e quando ganhei os CDs da Digerati, PC Expert, entre outros, adentrei ao mundo da programação. Isto me motivou a fazer um curso de Técnico em Informática pelo Senac. Participei do <a href="http://overheadcyber.esy.es/index.php?ref=atualizacoes&id=23" target="_blank">Talentos Senac 2015</a> nas três etapas. Na segunda etapa fui o segundo lugar com direito à medalha de prata. Só perdi na última.</p><br />
+					<p>Este sistema foi desenvolvido com as seguintes ferramentas: <br>
+						<a href="http://bluefish.openoffice.nl/index.html" target="_blank" class="social-btn"><img src="../_img/bluefish.svg" /></a>
+						<a href="https://inkscape.org/pt/" target="_blank" class="social-btn"><img src="../_img/inkscape.svg" /></a>
+						<a href="https://www.debian.org/" target="_blank" class="social-btn"><img src="../_img/debian.svg" /></a>
+						<a href="https://www.mozilla.org/pt-BR/firefox/new/" target="_blank" class="social-btn"><img src="../_img/firefox.svg" /></a>
+						<a href="http://www.gimp.org/" target="_blank" class="social-btn"><img src="../_img/gimp.svg" /></a>
+						<a href="https://www.apache.org/" target="_blank" class="social-btn"><img src="../_img/apache.svg" /></a>
+						<a href="https://www.mysql.com/" target="_blank" class="social-btn"><img src="../_img/mysql.svg" /></a>
+					</p>
+				</div>
+				
+				
+			</article>
+		</section>
+		<footer class="footer">
+			<div class="float-right">Copyright &copy; 2015 - 2016 | Todos os direitos reservados à <a href="#">OverHead</a></div>
+			<div class="float-left">
+				<p>-- Menu --</p>
+				<ul>
+					<li><a href="index.php">Página inicial</a></li>
+					<li><a href="privacidade.html">Políticas de Privacidade</a></li>
+					<li><a href="privacidade.html#Cookies" >Uso de Cookies</a></li>
+					<li><a href="termos.html">Termos de Uso</a></li>
+					<li><a href="learn/pt/index.html">Sobre o Bulletin</a></li>
+				</ul>
+				
+			</div>
+			<div style="clear: both;"></div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+		<section class="wrap">
+			<div class="container about">
+				
+				<article class="content white">
+					<form class="bulletin" action="" method="post">
+						<fieldset>
+							<legend>Login</legend>
+							<label><p>Email: </p></label>
+							<input type="text" name="email" id="email" required="required" /><br />
+							
+							<label><p>Password: </p></label>
+							<input type="password" name="passwd" id="passwd" required="required" /><br />
+							
+							<input type="submit" name="login" value="Login" />
+							<a href="" >I forgot my password</a>
+							<br /><br />
+							<div style="color: red;"><?php echo (isset($_SESSION["erros"]))?$_SESSION["erros"]:""; ?></div>
+						</fieldset>
+					</form>
+					<form class="bulletin" action="" method="post">
+						<fieldset>
+							<legend>New User</legend>
+							
+							<label for="language"><p>Language: </p></label>
+							<input type="radio" name="language" value="pt-BR" onclick="window.location.assign('index.php?lang=pt-BR');" />Português<br />
+							<input type="radio" name="language" value="en-US" checked="" onclick="window.location.assign('index.php?lang=en-US');" />English<br /><br />
+							
+							<label for="nome"><p>Name: </p></label>
+							<input type="text" name="nome" id="nome" required="required" /><br />
+							
+							<label for="sobrenome"><p>Surname: </p></label>
+							<input type="text" name="sobrenome" id="sobrenome" required="required" /><br />
+							
+							<label><p>Date of birth: </p></label>
+							<input type="date" name="data-nasc" id="data-nasc" placeholder='12/31/<?php echo date("Y")?>' required="required" /><br />
+							
+							<input type="submit" name="signUp" value="Sign up" />
+						</fieldset>
+					</form>
+					<div style="clear: both;"></div>
+				</article>
+				
+		</section>
