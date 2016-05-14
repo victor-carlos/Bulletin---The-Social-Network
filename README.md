@@ -10,7 +10,7 @@ The login is made informing the EMAIL and PASSWORD.
 If you are not registered, you must inform the NAME, SURNAME, NICKNAME, DATE OF BIRTH, COUNTRY, STATE OR PROVINCE, GENDER AND INTERESTS, ON, AUTHENTICATION data PHOTOS (background and profile) and CAPTCHA.
 
 3. Current Version
-0.7.1-2
+0.7.1-3 | The Youtube Pub on Post
 
 # Contacts:
  * Email: victor.carlos1395@gmail.com
