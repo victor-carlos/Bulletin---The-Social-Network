@@ -12,7 +12,7 @@
 		public function setID($id) {$this->id = $id;}
 		public function setTachinha($tachinha) {$this->tachinha = $tachinha;}
 		public function setCor($cor) {$this->cor = htmlentities($cor);}
-		public function setTexto($texto) {$this->texto = htmlentities($texto);}
+		public function setTexto($texto) {$this->texto = $texto;}
 		public function setData($data) {$this->data = $data;}
 		public function setIDFoto($id_foto) {$this->id_foto = $id_foto;}
 		

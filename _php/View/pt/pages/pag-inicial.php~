@@ -26,8 +26,8 @@
 							<span class="btn2" onclick="abrirAba(0);"></span>
 							<div class="hide" style="display: none;">
 								<p>Foto: <br /><input type="file" name="public_foto" /></p><br /><br />
-								<p>Vídeo (arquivo): <br /><input type="file" name="public_video" /></p><br /><br />
-								<p>Vídeo (YouTube - Incorporar): <br /><input type="text" name="incorporate_video" /></p><br /><br />
+								<!-- p>Vídeo (arquivo): <br /><input type="file" name="public_video" /></p><br /><br / -->
+								<!-- p>Vídeo (YouTube - Incorporar): <br /><input type="text" name="incorporate_video" /></p><br /><br / -->
 							</div>
 							
 						</fieldset><br />

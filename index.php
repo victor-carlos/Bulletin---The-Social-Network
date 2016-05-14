@@ -562,7 +562,7 @@
 		$pub->setCor(htmlentities($_POST['color']));
 		$public_foto = (isset($_FILES['public_foto']['name']))?$_FILES['public_foto']['name']:'';
 		$public_video = (isset($_FILES['public_video']['name']))?$_FILES['public_video']['name']:'';
-		$incorporate_foto = htmlentities($_POST['incorporate_video']);
+		$incorporate_video = htmlentities($_POST['incorporate_video']);
 		
 		$name_public_foto = explode(".", $public_foto);
 		$name_public_video = explode(".", $public_video);
@@ -591,7 +591,7 @@
 			$nome_foto = "_img/pub/".$nomeTeste.'.'.$ext_public_foto;
 			
 			if(move_uploaded_file($_FILES['public_foto']['tmp_name'], $nome_foto)) {
-				if($ctrlPublicacao->publicarTextoFoto($_SESSION['id'], $pub->getTexto(), $pub->getCor(), $nome_foto)) {
+				if($ctrlPublicacao->publicarTextoFoto($_SESSION['id'], ("<p>".htmlentities($pub->getTexto())."</p>"), $pub->getCor(), $nome_foto)) {
 				
 				}else {
 					$_SESSION['erros'] = "Falha de publicação";
@@ -631,16 +631,35 @@
 				echo "<script>alert('Falha de upload')</script>";
 			}
 			
-		//Somente texto
+		//Texto com vídeo do YouTube ou somente texto
 		}elseif($pub->getTexto() != "") {
-			if($ctrlPublicacao->publicarTexto($_SESSION['id'], $pub->getTexto(), $pub->getCor())) {
+			
+			$video = explode("v=", $pub->getTexto());
+			$video = explode("&", $video[1]);
+			
+			if(count($video > 0)){
+				$pub->setTexto("<p>" . (htmlentities($pub->getTexto())) . '</p><br /><br /><iframe src="https://www.youtube.com/embed/'.$video[0].'" frameborder="0" allowfullscreen></iframe>');
 				
-					$_SESSION['erros'] = "";
+				if($ctrlPublicacao->publicarTexto($_SESSION['id'], $pub->getTexto(), $pub->getCor())) {
 					
-				}else {
-					$_SESSION['erros'] = "Falha de publicação";
+						$_SESSION['erros'] = "";
+						
+					}else {
+						$_SESSION['erros'] = "Falha de publicação";
+						
+				}
+			}else {
+				if($ctrlPublicacao->publicarTexto($_SESSION['id'], ("<p>".htmlentities($pub->getTexto())."</p>"), $pub->getCor())) {
 					
+						$_SESSION['erros'] = "";
+						
+					}else {
+						$_SESSION['erros'] = "Falha de publicação";
+						
+				}
 			}
+			
+			
 				
 		}else {
 			if($_SESSION["lang"] == "pt-BR"){

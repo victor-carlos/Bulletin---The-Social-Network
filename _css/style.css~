@@ -198,7 +198,7 @@ body{
 		display: block;
 		width: 10px;
 		height: 10px;
-		margin-left: 59%;
+		margin-left: 75%;
 		margin-top: -13px;
 		border-left: 1px solid #000;
 		border-top: 1px solid #000;
@@ -232,7 +232,7 @@ body{
 		display: block;
 		width: 10px;
 		height: 10px;
-		margin-left: 59%;
+		margin-left: 75%;
 		margin-top: -13px;
 		border-left: 1px solid #000;
 		border-top: 1px solid #000;
@@ -348,10 +348,6 @@ body{
 		width: 50%;
 	}
 	
-	.identification > p a{
-		margin-top: -10px;
-	}
-	
 	.bulletin{
 		clear: both;
 		display: block;
@@ -372,6 +368,11 @@ body{
 	.bulletin figure img{
 		padding: 20px 0;
 		width: 100%;
+	}
+	
+	.bulletin iframe{
+		width: 100%;
+		height: 250px;
 	}
 	
 	.marcacoes{
@@ -450,10 +451,9 @@ body{
 	
 	.container{
 		clear: both;
-		max-width: 77%;
+		width: 95%;
 		margin: 0 auto;
 		background: rgba(255, 255, 255, .6);
-		padding: 20px;
 	}
 }
 
@@ -807,6 +807,11 @@ body{
 	.bulletin figure img{
 		padding: 20px 0;
 		width: 60%;
+	}
+	
+	.bulletin iframe{
+		width: 100%;
+		height: 550px;
 	}
 	
 	.marcacoes{

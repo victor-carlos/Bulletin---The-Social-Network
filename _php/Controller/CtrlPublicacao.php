@@ -358,7 +358,7 @@
 						</div>
 						
 						<div class="bulletin">
-						<p>'.$linha["texto"].'</p>';
+						'.$linha["texto"];
 						if(strrpos($linha['nome_foto'], "media") > 0) {
 					$post .='<video class="video-page" controls="controls">
 							<source src="media/video/01.mp4" type="video/mp4" />
@@ -528,7 +528,7 @@
 						</div>
 						
 						<div class="bulletin">
-						<p>'.$linha["texto"].'</p>';
+						'.$linha["texto"];
 						if(strrpos($linha['nome_foto'], "media") > 0) {
 					$post .='<video class="video-page" controls="controls">
 							<source src="media/video/01.mp4" type="video/mp4" />
@@ -698,7 +698,7 @@
 						</div>
 						
 						<div class="bulletin">
-						<p>'.$linha["texto"].'</p>';
+						'.$linha["texto"];
 						if(strrpos($linha['nome_foto'], "media") > 0) {
 					$posts .='<video class="video-page" controls="controls">
 							<source src="media/video/01.mp4" type="video/mp4" />
@@ -861,7 +861,7 @@
 						</div>
 						
 						<div class="bulletin">
-						<p>'.$linha["texto"].'</p>';
+						'.$linha["texto"];
 						if(strrpos($linha['nome_foto'], "media") > 0) {
 					$post .='<video class="video-page" controls="controls">
 							<source src="media/video/01.mp4" type="video/mp4" />
@@ -1022,7 +1022,7 @@
 						</div>
 						
 						<div class="bulletin">
-						<p>'.$linha["texto"].'</p>';
+						'.$linha["texto"];
 						if(strrpos($linha['nome_foto'], "media") > 0) {
 					$post .='<video class="video-page" controls="controls">
 							<source src="media/video/01.mp4" type="video/mp4" />
@@ -1194,7 +1194,7 @@
 						</div>
 						
 						<div class="bulletin">
-						<p>'.$linha["texto"].'</p>';
+						'.$linha["texto"];
 						if(strrpos($linha['nome_foto'], "media") > 0) {
 					$posts .='<video class="video-page" controls="controls">
 							<source src="media/video/01.mp4" type="video/mp4" />

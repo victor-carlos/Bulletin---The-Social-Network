@@ -172,7 +172,7 @@
 			$cont = 0;
 			
 			if(!is_bool($con->pdo)) {
-				$result = $con->pdo->prepare("SELECT visto FROM visto WHERE id_usuario = {$id} AND visto = false DESC LIMIT 50;");
+				$result = $con->pdo->prepare("SELECT visto FROM visto WHERE id_usuario = {$id} AND visto = false ORDER BY id DESC LIMIT 50;");
 				$result->execute();
 				
 				while ($linha = $result->fetch(PDO::FETCH_ASSOC)){
@@ -644,7 +644,7 @@
 					}
 				}
 				
-				$result2 = $con->pdo->query("SELECT id FROM publicacao WHERE " . $id_amigo . " DESC LIMIT 50;");
+				$result2 = $con->pdo->query("SELECT id FROM publicacao WHERE " . $id_amigo . " LIMIT 50;");
 				$result2->execute();
 				
 				//return $id_amigo;
@@ -804,7 +804,7 @@
 					$count++;
 				}
 				
-				$result2 = $con->pdo->query("SELECT id FROM publicacao WHERE " . $id_amigo . "; DESC LIMIT 50");
+				$result2 = $con->pdo->query("SELECT id FROM publicacao WHERE " . $id_amigo . " LIMIT 50;");
 				$result2->execute();
 				
 				$cont = 0;
@@ -965,7 +965,7 @@
 					$count++;
 				}
 				
-				$result2 = $con->pdo->query("SELECT id FROM publicacao WHERE " . $id_amigo . " DESC LIMIT 50;");
+				$result2 = $con->pdo->query("SELECT id FROM publicacao WHERE " . $id_amigo . " LIMIT 50;");
 				$result2->execute();
 				
 				$cont = 0;
@@ -1140,7 +1140,7 @@
 					}
 				}
 				
-				$result2 = $con->pdo->query("SELECT id FROM publicacao WHERE " . $id_amigo . " DESC LIMIT 50;");
+				$result2 = $con->pdo->query("SELECT id FROM publicacao WHERE " . $id_amigo . " LIMIT 50;");
 				$result2->execute();
 				
 				//return $id_amigo;
@@ -1175,7 +1175,7 @@
 					$dados = $ctrlUsuario->getPerfilPost($linha['id_usuario']);
 					$posts .= '<article class="content '.$linha["cor"].'">
 						<div class="identification">
-							<form action="" method="post" class="form" id="form" ><!-- onsubmit="return marcar('.$linha['id'].');" -->
+							<form action="" method="post" class="form" id="form" > <!-- onsubmit="return marcar('.$linha['id'].');" -->
 								<div class="marcacoes">'.(isset($id_marcacao[$linha["id"]])?$id_marcacao[$linha["id"]]:0).'</div>
 								
 								<div class="btn6">::</div>

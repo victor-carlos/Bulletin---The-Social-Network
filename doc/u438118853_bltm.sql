@@ -96,9 +96,6 @@ CREATE TABLE IF NOT EXISTS `marcacao` (
 -- Extraindo dados da tabela `marcacao`
 --
 
-INSERT INTO `marcacao` (`id`, `marcacao`, `id_usuario`, `id_publicacao`) VALUES
-(1, 1, 49, 3);
-
 -- --------------------------------------------------------
 
 --
