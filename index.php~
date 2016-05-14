@@ -637,7 +637,7 @@
 			$video = explode("v=", $pub->getTexto());
 			$video = explode("&", $video[1]);
 			
-			if(count($video > 0)){
+			if(count($video) > 1){
 				$pub->setTexto("<p>" . (htmlentities($pub->getTexto())) . '</p><br /><br /><iframe src="https://www.youtube.com/embed/'.$video[0].'" frameborder="0" allowfullscreen></iframe>');
 				
 				if($ctrlPublicacao->publicarTexto($_SESSION['id'], $pub->getTexto(), $pub->getCor())) {

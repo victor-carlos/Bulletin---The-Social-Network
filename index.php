@@ -591,7 +591,7 @@
 			$nome_foto = "_img/pub/".$nomeTeste.'.'.$ext_public_foto;
 			
 			if(move_uploaded_file($_FILES['public_foto']['tmp_name'], $nome_foto)) {
-				if($ctrlPublicacao->publicarTextoFoto($_SESSION['id'], ("<p>".htmlentities($pub->getTexto())."</p>"), $pub->getCor(), $nome_foto)) {
+				if($ctrlPublicacao->publicarTextoFoto($_SESSION['id'], ("<p>".$pub->getTexto()."</p>"), $pub->getCor(), $nome_foto)) {
 				
 				}else {
 					$_SESSION['erros'] = "Falha de publicação";
@@ -638,7 +638,7 @@
 			$video = explode("&", $video[1]);
 			
 			if(count($video) > 1){
-				$pub->setTexto("<p>" . (htmlentities($pub->getTexto())) . '</p><br /><br /><iframe src="https://www.youtube.com/embed/'.$video[0].'" frameborder="0" allowfullscreen></iframe>');
+				$pub->setTexto("<p>" . ($pub->getTexto()) . '</p><br /><br /><iframe src="https://www.youtube.com/embed/'.$video[0].'" frameborder="0" allowfullscreen></iframe>');
 				
 				if($ctrlPublicacao->publicarTexto($_SESSION['id'], $pub->getTexto(), $pub->getCor())) {
 					
@@ -649,7 +649,7 @@
 						
 				}
 			}else {
-				if($ctrlPublicacao->publicarTexto($_SESSION['id'], ("<p>".htmlentities($pub->getTexto())."</p>"), $pub->getCor())) {
+				if($ctrlPublicacao->publicarTexto($_SESSION['id'], ("<p>".$pub->getTexto()."</p>"), $pub->getCor())) {
 					
 						$_SESSION['erros'] = "";
 						
