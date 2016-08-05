@@ -1,7 +1,7 @@
 	<?php if($_SESSION['logado'] == true) {?>
-	<body style="background: url('<?php echo (isset($_GET['addr']))?$ctrlUsuario->fotoCapa($_GET['addr']):$ctrlUsuario->fotoCapa($_SESSION['endereco']);?>') no-repeat;background-size: cover; background-attachment: fixed;">
+	<body style="background: url('<?php echo (isset($_GET['addr']))?$ctrlUsuario->fotoCapa($_GET['addr']):$ctrlUsuario->fotoCapa($_SESSION['endereco']);?>') no-repeat; background-size: cover; background-attachment: fixed;">
 	<?php }else { ?>
-	<body style="background: url('_img/bg.jpg') no-repeat;background-size: cover; background-attachment: fixed;">
+	<body style="background: url('_img/bg.jpg') no-repeat; background-size: cover; background-attachment: fixed;">
 			<?php
 		}
 				if($_SESSION['logado'] == true) {
@@ -33,11 +33,12 @@
 					
 					<?php if($ctrlUsuario->isAmigo($_SESSION['endereco'], (isset($_GET['addr']))?htmlentities($_GET['addr']):"")) {?>
 						<?php if($addr != $_SESSION['endereco'] && isset($_GET['addr'])) {?>
-							<li><a href="index.php">Conversar</a></li>
+							<li><a href="index.php?ref=Conversa&addr=<?php echo $_GET['addr']; ?>">Conversar</a></li>
 					<?php }}else {
-						if($_GET['ref'] == "Perfil") {
+						if($_GET['ref'] == "Perfil" && $ctrlUsuario->isSolicitado($_SESSION['endereco'], (isset($_GET['addr'])))) {
 							?><li><a href="index.php">Solicitar amizade</a></li>
 					<?php }} ?>
+					<li><a href="index.php?ref=Mensagens">Mensagens</a></li>
 					<li><a href="index.php?ref=Notificacoes">Notificações<?php echo ($ctrlNotificacao->getNotificacoes($_SESSION['id']) != 0 )?"(".$ctrlNotificacao->getNotificacoes($_SESSION['id']).")":''; ?></a></li>
 					<li><a href="index.php?ref=Pagina Inicial">Boletins <?php echo ($ctrlPublicacao->bulletinNaoVistos($_SESSION['id']) != 0 )?"(".$ctrlPublicacao->bulletinNaoVistos($_SESSION['id']).")":''; ?></a></li>
 					<li><a href="index.php?ref=Configuracoes">Configurações</a></li>
@@ -46,7 +47,7 @@
 			</div>
 				
 				<div class="user-name"><?php echo $text_center; ?></div>
-				<div id="scrollUp" onclick="$('.global-nav').css('height', '100px');$('.container, #scrollUp, .user-name').css('display', 'none');$('.container').slideDown(500)"></div>
+				<div id="scrollUp" onclick="$('.global-nav').css('height', '100px');$('.global-nav').css('background', 'none');$('.container, #scrollUp, .user-name').css('display', 'none');$('.container').slideDown(500);"></div>
 				
 		</nav>
 			<?php
@@ -60,7 +61,7 @@
 			</a>
 				
 				<div class="user-name"><?php echo $text_center; ?></div>
-				<div id="scrollUp" onclick="$('.global-nav').css('height', '100px');$('.container, #scrollUp, .user-name').css('display', 'none');$('.container').slideDown(500)"></div>
+				<div id="scrollUp" onclick="$('.global-nav').css('height', '100px');$('.global-nav').css('background', 'none');$('.container, #scrollUp, .user-name').css('display', 'none');$('.container').slideDown(500);"></div>
 				
 			</nav>
 			<?php

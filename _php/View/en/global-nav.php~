@@ -29,13 +29,13 @@
 				
 			<div class="global-main-menu">
 				<ul>
-					<li><form class="search" action="" method="get"><input type="hidden" name="ref" value="Pesquisa" /><input type="text" name="rq" id="rq" placeholder="Pesquisa"/><input class="btn3" type="submit" value="" /></form></li>
+					<li><form class="search" action="" method="get"><input type="hidden" name="ref" value="Search" /><input type="text" name="rq" id="rq" placeholder="Search"/><input class="btn3" type="submit" value="" /></form></li>
 					
 					<?php if($ctrlUsuario->isAmigo($_SESSION['endereco'], (isset($_GET['addr']))?$_GET['addr']:"")) {?>
 						<?php if($addr != $_SESSION['endereco'] && isset($_GET['addr'])) {?>
 							<li><a href="index.php">Talk</a></li>
 					<?php }}else {
-						if($_GET['ref'] == "Perfil") {
+						if($_GET['ref'] == "Perfil" && $ctrlUsuario->isSolicitado($_SESSION['endereco'], (isset($_GET['addr'])))) {
 							?><li><a href="index.php">Request friendship</a></li>
 					<?php }} ?>
 					<li><a href="index.php?ref=Notifications">Notifications<?php echo ($ctrlNotificacao->getNotificacoes($_SESSION['id']) != 0 )?"(".$ctrlNotificacao->getNotificacoes($_SESSION['id']).")":''; ?></a></li>

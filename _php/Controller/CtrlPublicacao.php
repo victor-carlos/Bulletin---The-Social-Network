@@ -359,13 +359,6 @@
 						
 						<div class="bulletin">
 						'.$linha["texto"];
-						if(strrpos($linha['nome_foto'], "media") > 0) {
-					$post .='<video class="video-page" controls="controls">
-							<source src="media/video/01.mp4" type="video/mp4" />
-							<!--Suportado em IE9, Chrome 6 e Safari 5 --> 
-							O seu navegador não suporta a tag vídeo
-						</video>
-						';}
 						
 					if(strrpos($linha['nome_foto'], "img") > 0) {
 						$post .='<a href="'.$linha["nome_foto"].'" target="_blank" >
@@ -529,13 +522,6 @@
 						
 						<div class="bulletin">
 						'.$linha["texto"];
-						if(strrpos($linha['nome_foto'], "media") > 0) {
-					$post .='<video class="video-page" controls="controls">
-							<source src="media/video/01.mp4" type="video/mp4" />
-							<!-- Supported in IE9, Chrome 6 and Safari 5 --> 
-							Your browser does not support the video tag
-						</video>
-						';}
 						
 					if(strrpos($linha['nome_foto'], "img") > 0) {
 						$post .='<a href="'.$linha["nome_foto"].'" target="_blank" >
@@ -699,13 +685,6 @@
 						
 						<div class="bulletin">
 						'.$linha["texto"];
-						if(strrpos($linha['nome_foto'], "media") > 0) {
-					$posts .='<video class="video-page" controls="controls">
-							<source src="media/video/01.mp4" type="video/mp4" />
-							<!--Supported in IE9, Chrome 6 and Safari 5 --> 
-							Your browser does not support the video tag
-						</video>
-						';}
 						
 					if(strrpos($linha['nome_foto'], "img") > 0) {
 						$posts .='<a href="'.$linha["nome_foto"].'" target="_blank" >
@@ -862,13 +841,6 @@
 						
 						<div class="bulletin">
 						'.$linha["texto"];
-						if(strrpos($linha['nome_foto'], "media") > 0) {
-					$post .='<video class="video-page" controls="controls">
-							<source src="media/video/01.mp4" type="video/mp4" />
-							<!--Suportado em IE9, Chrome 6 e Safari 5 --> 
-							O seu navegador não suporta a tag vídeo
-						</video>
-						';}
 						
 					if(strrpos($linha['nome_foto'], "img") > 0) {
 						$post .='<a href="'.$linha["nome_foto"].'" target="_blank" >
@@ -1023,13 +995,6 @@
 						
 						<div class="bulletin">
 						'.$linha["texto"];
-						if(strrpos($linha['nome_foto'], "media") > 0) {
-					$post .='<video class="video-page" controls="controls">
-							<source src="media/video/01.mp4" type="video/mp4" />
-							<!-- Supported in IE9, Chrome 6 and Safari 5 --> 
-							Your browser does not support the video tag
-						</video>
-						';}
 						
 					if(strrpos($linha['nome_foto'], "img") > 0) {
 						$post .='<a href="'.$linha["nome_foto"].'" target="_blank" >
@@ -1195,13 +1160,6 @@
 						
 						<div class="bulletin">
 						'.$linha["texto"];
-						if(strrpos($linha['nome_foto'], "media") > 0) {
-					$posts .='<video class="video-page" controls="controls">
-							<source src="media/video/01.mp4" type="video/mp4" />
-							<!--Suportado em IE9, Chrome 6 e Safari 5 --> 
-							O seu navegador não suporta a tag vídeo
-						</video>
-						';}
 						
 					if(strrpos($linha['nome_foto'], "img") > 0) {
 						$posts .='<a href="'.$linha["nome_foto"].'" target="_blank" >

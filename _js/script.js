@@ -65,10 +65,27 @@ $(function() {
 	/* Correção de bug do height: 100%; da classe global-nav */
 	$(".global-nav").css("height", $(window).height());
 	
+	/*$('#publicar').click(function() {
+		
+		var dados = $('#publicacao').serialize();
+		
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: '_ajax/publicPost.php',
+			async: true,
+			data: dados,
+			success: function(response) {
+				location.reload();
+			}
+		});
 
+		return false;
+	});*/
+	
+
+	
 //});
-	
-	
 	
 });
 

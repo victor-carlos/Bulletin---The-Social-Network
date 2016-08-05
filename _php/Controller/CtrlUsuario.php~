@@ -82,8 +82,7 @@
 				
 				while ($linha = $result->fetch(PDO::FETCH_ASSOC)){
 					if($linha['id'] > 0) {
-						$usuarios .= '<article class="content white">
-						<div class="identification">
+						$usuarios .= '<div class="identification">
 							<img src="'.$linha['foto_perfil'].'" alt="'.$linha["nome"].'">
 							<a href="index.php?ref=Perfil&addr='.$linha["endereco"].'" >'.$linha["nome"].' '.$linha["sobrenome"].' ('.$linha["nickname"].') <br> - '.$linha["estado"].' - '.$linha["pais"].' </a>
 						</div>
@@ -108,8 +107,7 @@
 				
 				while ($linha = $result->fetch(PDO::FETCH_ASSOC)){
 					if($linha['id'] > 0) {
-						$usuarios .= '<article class="content white">
-						<div class="identification">
+						$usuarios .= '<div class="identification">
 							<img src="'.$linha['foto_perfil'].'" alt="'.$linha["nome"].'">
 							<a href="index.php?ref=Perfil&addr='.$linha["endereco"].'" >'.$linha["nome"].' '.$linha["sobrenome"].' ('.$linha["nickname"].') <br> - '.$linha["estado"].' - '.$linha["pais"].' </a>
 						</div>
@@ -412,8 +410,8 @@
 				}
 				
 			}
-			//echo $isAmigo;
-			return $isAmigo;
+			//echo $endereco_amigo;
+			return ($isAmigo)?true:false;
 		}
 		
 		public function selecionaUsuario($id_publicacao) {
@@ -577,12 +575,13 @@
 				$mensagem = "<h1>Welcome to Bulletin, {$nome} {$sobrenome}!</h1><br><br>To confirm your account, <a href='www.bulletin.com/index.php?validation={$endereco}'>click here.</a><br>Or copy and paste into browser this address: www.bulletin.com/index.php?validation={$endereco}";
 			}
 			
-			$headers = "Content-Type:text/html; charset=UTF-8 \n";
-			$headers .= "From: ".$nome."".$sobrenome."< " . $email . " > \n";
-			$headers .= "X-Sender: <noreply.bulletin.com> \n";
-			$headers .= "X-Mailer: PHP v".phpversion()." \n";
-			$headers .= "X-IP: ". $_SERVER['REMOTE_ADDR'] ." \n";
-			$headers .= "MIME-Version: 1.0 \n";
+			$headers = "Content-Type:text/html; charset=UTF-8\n";
+			$headers .= "From: ".$nome."".$sobrenome."< " . $email . " >\n";
+			$headers .= "X-Sender: <noreply.bulletin.com>\n";
+			$headers .= "X-Mailer: PHP v".phpversion()."\n";
+			$headers .= "X-IP: ". $_SERVER['REMOTE_ADDR'] ."\n";
+			$headers .= "Return-Path: ". $email ."\n";
+			$headers .= "MIME-Version: 1.0\n";
 			
 			if(mail($email, "Confirmação de conta do Bulletin", $mensagem, $headers)) {
 				return true;
@@ -623,7 +622,7 @@
 						$id2 = $linha["id"];
 					}
 					
-					if($id2 > 0){
+					if($id2 <= 0){
 						$result5 = $con->pdo->prepare("INSERT INTO amigo (id_usuario, id_amigo, endereco_amigo, confirmado) VALUES ('$id', '$id', '$endereco', 1);");
 						$result5->execute();
 					}
@@ -655,18 +654,19 @@
 					$id = $linha['id'];
 				}
 				
-				$result1 = $con->pdo->prepare("SELECT id_usuario, id_amigo FROM amigo WHERE ".(($endereco == $_SESSION['endereco'])?'id_amigo':'id_usuario')." = '".$id."';");
+				$result1 = $con->pdo->prepare("SELECT id_usuario, id_amigo FROM amigo WHERE ".(($endereco == $_SESSION['endereco'])?'id_usuario':'id_amigo')." = '".$id."' AND confirmado = true;");
 				$result1->execute();
 				
 				$count = 0;
 				while ($linha = $result1->fetch(PDO::FETCH_ASSOC)){
+				//echo $linha['id_usuario'] . "-" . $linha['id_amigo'];
 					if($count == 0){
-						$id_amigo = " id = " . (($endereco == $_SESSION['endereco'])?$linha['id_usuario']:$linha['id_amigo']);
+						$id_amigo = " id = " . (($endereco == $_SESSION['endereco'])?$linha['id_amigo']:$linha['id_usuario']);
 					}else {
-						$id_amigo =" OR id = " . (($endereco == $_SESSION['endereco'])?$linha['id_usuario']:$linha['id_amigo']);
+						$id_amigo =" OR id = " . (($endereco == $_SESSION['endereco'])?$linha['id_amigo']:$linha['id_usuario']);
 					}
 				}
-				
+				//echo $id_amigo;
 				$result2 = $con->pdo->prepare("SELECT id, nome, sobrenome, nickname, foto_perfil, endereco FROM usuario WHERE {$id_amigo}");
 				$result2->execute();
 				

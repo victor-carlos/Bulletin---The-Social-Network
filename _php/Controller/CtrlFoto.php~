@@ -8,13 +8,27 @@
 			$id_foto = 0;
 			
 			if(!is_bool($con->pdo)) {
-				$result = $con->pdo->prepare("INSERT INTO foto (nome_foto, id_publicacao) VALUES ('".$nome_foto."', ".$id_publicacao.");");
+				$result = $con->pdo->prepare("INSERT INTO foto (nome_foto, id_publicacao, id_usuario) VALUES ('".$nome_foto."', ".$id_publicacao.",".$id_usuario." );");
 				$result->execute();
 				
 				return true;
 			}else {
 				return false;
 			}
+		}
+		
+		function compressarImagem($source_path, $destination_path) {
+			$info = getimagesize($source_path);
+			
+			if ($info['mime'] == 'image/jpeg') {
+				$image = imagecreatefromjpeg($source_path);
+			} elseif ($info['mime'] == 'image/png') {
+				$image = imagecreatefrompng($source_path);
+			}
+			
+			imagejpeg($image, $destination_path, 6);
+			
+			return $destination_path;
 		}
 	}
 ?>

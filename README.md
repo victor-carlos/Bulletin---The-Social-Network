@@ -12,6 +12,9 @@ If you are not registered, you must inform the NAME, SURNAME, NICKNAME, DATE OF 
 3. Current Version
 0.7.1-3 | The Youtube Pub on Post
 
+4. Current Version
+0.7.2 | Talk Talk
+
 # Contacts:
  * Email: victor.carlos1395@gmail.com
  * LinkedIn: https://br.linkedin.com/in/victor-carlos-671537b4

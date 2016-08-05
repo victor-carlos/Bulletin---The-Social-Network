@@ -2,11 +2,11 @@
 			<div class="container about">
 				
 				<article class="content white">
-					<form class="bulletin" action="" method="post" enctype="multipart/form-data" >
+					<form class="bulletin" id="publicacao" action="" method="post" enctype="multipart/form-data" >
 						<fieldset>
 							<legend>Publication</legend>
 							
-							<textarea name="post" placeholder="Say something"></textarea>
+							<textarea name="post" placeholder="Say something" required=""></textarea>
 							
 							<br />
 							
@@ -28,8 +28,6 @@
 							<span class="btn2" onclick="abrirAba(0);"></span>
 							<div class="hide" style="display: none;">
 								<p>Photo: <br /><input type="file" name="public_foto" /></p><br /><br />
-								<!-- p>Vídeo (file): <br /><input type="file" name="public_video" /></p><br /><br / -->
-								<!-- p>Vídeo (YouTube - Incorporate): <br /><input type="text" name="incorporate_video" /></p><br /><br / -->
 							</div>
 							
 						</fieldset><br />

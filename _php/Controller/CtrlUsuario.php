@@ -583,7 +583,7 @@
 			$headers .= "Return-Path: ". $email ."\n";
 			$headers .= "MIME-Version: 1.0\n";
 			
-			if(mail($email, "Confirmação de conta do Bulletin", $mensagem, $headers)) {
+			if(mail($email, "Welcome to Bulletin", $mensagem, $headers)) {
 				return true;
 			}else {
 				return false;

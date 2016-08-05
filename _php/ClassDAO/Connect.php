@@ -9,6 +9,8 @@
 		
 		public function conectar() {
 			try{
+				
+				// My Local Server
 				$this->dbname = "u438118853_bltm";
 				$this->host = "localhost";
 				$this->user = "root";

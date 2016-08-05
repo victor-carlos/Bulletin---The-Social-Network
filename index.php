@@ -1,19 +1,21 @@
 <?php
-	
+	/*
 	error_reporting(0);
 	ini_set("display_errors", 0 );
-	/*
+	*/
 	ini_set('display_errors',1);
 	ini_set('display_startup_erros',1);
 	error_reporting(E_ALL);
-	*/
+	
 	require("_php/Model/Usuario.php");
 	require("_php/Model/Comentario.php");
+	require("_php/Model/Conversa.php");
 	require("_php/Model/Foto.php");
 	require("_php/Model/Video.php");
 	require("_php/Model/Notificacao.php");
 	require("_php/Controller/CtrlUsuario.php");
 	require("_php/Controller/CtrlComentario.php");
+	require("_php/Controller/CtrlConversa.php");
 	require("_php/Controller/CtrlPublicacao.php");
 	require("_php/Controller/CtrlFoto.php");
 	require("_php/Controller/CtrlNotificacao.php");
@@ -41,12 +43,14 @@
 	
 	$usuario = new Usuario();
 	$comentario = new Comentario();
+	$conversa = new Conversa();
 	$foto = new Foto();
 	$video = new Video();
 	$pub = new Publicacao();
 	$notificacao = new Notificacao();
 	$ctrlUsuario = new CtrlUsuario();
 	$ctrlComentario = new CtrlComentario();
+	$ctrlConversa = new CtrlConversa();
 	$ctrlPublicacao = new CtrlPublicacao();
 	$ctrlFoto = new CtrlFoto();
 	$ctrlNotificacao = new CtrlNotificacao();
@@ -163,6 +167,20 @@
 		}elseif(!isset($_GET["ref"]) || $ref == "Confirmacao") {
 			$text_center = "Verifique sua caixa de email (veja em Spam também) o link de confirmação.";
 			
+		//Conversa
+		}elseif(!isset($_GET["ref"]) || $ref == "Conversa") {
+			$text_center = "Conversa de <br />" . $_SESSION['nome'] . " " . $_SESSION['sobrenome'] . " e " . $ctrlPublicacao->getNomeUsuario(htmlentities($_GET['addr']));
+			$body = "_php/View/pt/pages/conversa.php";
+			
+		//Mensagens
+		}elseif(!isset($_GET["ref"]) || $ref == "Mensagens") {
+			$text_center = "Caixa de Mensagem";
+			$body = "_php/View/pt/pages/mensagens.php";
+			
+		//Deletar Mensagem
+		}elseif($ref == "Deletar") {
+			$ctrlConversa->apagarMensagem(htmlentities($_GET['id']));
+			echo "<script>window.location.assign('index.php?ref=Conversa&addr=".$_GET['addr']."')</script>";
 		//Sair
 		}elseif($ref == "Sair") {
 			
@@ -295,6 +313,10 @@
 		}elseif(!isset($_GET["ref"]) || $ref == "Confirmation") {
 			$text_center = "Check your email box (see Spam also) the confirmation link.";
 			
+		//Chat
+		}elseif(!isset($_GET["ref"]) || $ref == "Conversa") {
+			$text_center = "Chat <br />" . $_SESSION['nome'] . " " . $_SESSION['sobrenome'] . " and " . $ctrlPublicacao->getNomeUsuario(htmlentities($_GET['addr']));
+			
 		//Exit
 		}elseif($ref == "Exit") {
 			
@@ -328,6 +350,55 @@
 			
 		}
 		
+	}
+	
+	/* Envio de Mensagem */
+	if(isset($_POST['env_conversa'])) {
+		$conversa->setMensagem($_POST['conversa']);
+		$foto = false;
+		
+		if(isset($_FILES['foto']['name'])) {
+			$nomeFoto = explode(".",$_FILES['foto']['name']);
+			$ctFoto = count($nomeFoto);
+			$extNomeFoto = $nomeFoto[($ctFoto - 1)];
+			$foto = ($extNomeFoto != "")?true:false;
+		}
+		
+		if($foto) {
+			if($extNomeFoto == "jpg" || $extNomeFoto == "png"){
+				$numTeste = 0;
+				$nome = date("Y").date("m").date("d").date("H").date("i").date("s");
+				
+				$nomeTeste = $nome;
+				
+				while(file_exists("_img/chat/".$nomeTeste.'.'.$extNomeFoto)) {
+					$nomeTeste = $nome.'_'.$numTeste;
+					$numTeste++;
+					
+				}
+				
+				if(move_uploaded_file($_FILES['foto']['tmp_name'], "_img/chat/".$nomeTeste.'.'.$extNomeFoto)) {
+					$foto_chat = "_img/chat/".$nomeTeste.'.'.$extNomeFoto;
+					
+					$ctrlConversa->enviarMensagem($conversa->getMensagem(), htmlentities($_GET['addr']), $foto_chat);
+					$_SESSION['erros'] = "";
+				}
+				
+			}else {
+				if($lang == "pt-BR"){
+					$_SESSION['erros'] = "Imágem Inválida";
+				}else {
+					$_SESSION['erros'] = "Invalid Image";
+				}
+			}
+			
+		}else {
+			$ctrlConversa->enviarMensagem($conversa->getMensagem(), htmlentities($_GET['addr']), $foto);
+			$_SESSION['erros'] = "";
+			
+		}
+		
+		echo "<script>window.location.assign('index.php?ref=Conversa&addr=".$_GET['addr']."')</script>";
 	}
 	
 	/* Solicitação de amizade */
@@ -402,33 +473,34 @@
 				$_SESSION['logado'] = true;
 				
 				if($_SESSION["lang"] == "pt-BR"){
-					header("location:index.php?ref=Pagina Inicial");
+					echo "<script>window.location.assign('index.php?ref=Pagina Inicial')</script>";
 					
 				}else {
-					header("location:index.php?ref=Home Page");
+					echo "<script>window.location.assign('index.php?ref=Home Page')</script>";
+					
 				}
 				
 			}else {
 				if($_SESSION["lang"] == "pt-BR"){
 					$_SESSION["erros"] = "Login Inválido";
-					header("location:index.php?lang=".$lang);
 					
 				}else {
 					$_SESSION["erros"] = "Invalid Login";
-					header("location:index.php?lang=".$lang);
+					
 				}
+				
+				echo "<script>window.location.assign('index.php')</script>";
 			}
 			
 		}else {
 			if($_SESSION["lang"] == "pt-BR"){
 				$_SESSION["erros"] = "Login Inválido";
-				header("location:index.php?lang=".$lang);
 				
 			}else {
 				$_SESSION["erros"] = "Invalid Login";
-				header("location:index.php?lang=".$lang);
 			}
 			
+			echo "<script>window.location.assign('index.php')</script>";
 		}
 	}
 	
@@ -561,14 +633,10 @@
 		$pub->setTexto(htmlentities($_POST['post']));
 		$pub->setCor(htmlentities($_POST['color']));
 		$public_foto = (isset($_FILES['public_foto']['name']))?$_FILES['public_foto']['name']:'';
-		$public_video = (isset($_FILES['public_video']['name']))?$_FILES['public_video']['name']:'';
-		$incorporate_video = htmlentities($_POST['incorporate_video']);
 		
 		$name_public_foto = explode(".", $public_foto);
-		$name_public_video = explode(".", $public_video);
 		
 		$ct_public_foto = count($name_public_foto);
-		$ct_public_video = count($name_public_video);
 		
 		//echo "<script>alert('" . $pub->getTexto() . "')</script>";
 		
@@ -603,34 +671,7 @@
 				
 			}
 		
-		//Texto com vídeo
-		}elseif($ct_public_video != 1){
-			$ext_public_video = $name_public_video[($ct_public_video - 1)];
-			
-			$nome = date("Y").date("m").date("d").date("H").date("i").date("s");
-			
-			$numTeste = 0;
-			$nomeTeste = $nome;
-			
-			while(file_exists("_media/video/".$nomeTeste.'.'.$ext_public_video)) {
-				$nomeTeste = $nome.'_'.$numTeste;
-				$numTeste++;
-			}
-			
-			if(move_uploaded_file($_FILES['public_video']['tmp_name'], "_media/video/".$nomeTeste.'.'.$ext_public_video)) {
-				if($ctrlPublicacao->publicarTextoVideo($_SESSION['id'], $pub->getTexto(), $pub->getCor(), ($nomeTeste.'.'.$ext_public_video))) {
-					$_SESSION['erros'] = "";
-					
-				}else {
-					$_SESSION['erros'] = "Falha de publicação";
-					echo "<script>alert('Falha de publicação')</script>";
-				}
-				
-			}else {
-				$_SESSION['erros'] = "Falha de upload";
-				echo "<script>alert('Falha de upload')</script>";
-			}
-			
+		
 		//Texto com vídeo do YouTube ou somente texto
 		}elseif($pub->getTexto() != "") {
 			
@@ -638,7 +679,7 @@
 			$video = explode("&", $video[1]);
 			
 			if(count($video) > 1){
-				$pub->setTexto("<p>" . ($pub->getTexto()) . '</p><br /><br /><iframe src="https://www.youtube.com/embed/'.$video[0].'" frameborder="0" allowfullscreen></iframe>');
+				$pub->setTexto('<textarea disabled="">'.($pub->getTexto()) . '</textarea><br /><iframe src="https://www.youtube.com/embed/'.$video[0].'" frameborder="0" allowfullscreen></iframe>');
 				
 				if($ctrlPublicacao->publicarTexto($_SESSION['id'], $pub->getTexto(), $pub->getCor())) {
 					
@@ -649,7 +690,7 @@
 						
 				}
 			}else {
-				if($ctrlPublicacao->publicarTexto($_SESSION['id'], ("<p>".$pub->getTexto()."</p>"), $pub->getCor())) {
+				if($ctrlPublicacao->publicarTexto($_SESSION['id'], ('<textarea disabled="">'.$pub->getTexto()."</textarea>"), $pub->getCor())) {
 					
 						$_SESSION['erros'] = "";
 						
@@ -678,7 +719,7 @@
 	if(isset($_POST['remove_publicacao'])){
 		//echo "<script>alert('".$_POST['id_post']."')</script>";
 		if($ctrlPublicacao->deletarPost(htmlentities($_POST['id_post']))) {
-			header("location:index.php?ref=Pagina Inicial");
+			echo "<script>window.location.assign('index.php')</script>";
 		}
 	}
 	

@@ -21,13 +21,13 @@
 							<?php }elseif($ctrlUsuario->isAmigo($_SESSION['endereco'], htmlentities($_GET['addr']))) { ?>
 							
 							<input type="submit" name="remove_amizade" value="Desfazer Amizade" />
-							<a class="btn5" href="index.php?ref=Boletim&addr=<?php echo $_GET['addr']; ?>" />Ver Boletins</a><br /><br />
+							<a class="btn5" href="index.php?ref=Boletim&addr=<?php echo $_GET['addr']; ?>" />Ver Boletins</a><br /><br /><br />
 							<input type="submit" name="den_perfil" value="Denunciar Perfil" />
 							<?php
 								if($_SESSION['endereco'] == $_GET['addr']){
 							?>
-							<a class="btn5" href="index.php?ref=Boletim&addr=<?php echo $_GET['addr']; ?>">Ver meus boletins</a><br /><br />
-							<a class="btn5" href="index.php?ref=Configuracoes">Ir para configurações</a>
+							<a class="btn5" href="index.php?ref=Boletim&addr=<?php echo $_GET['addr']; ?>">Ver meus boletins</a><br /><br /><br />
+							<a class="btn5" href="index.php?ref=Configuracoes">Ir para configurações</a><br /><br /><br />
 							
 							<?php } }else { 
 								if($ctrlUsuario->isSolicitado($_SESSION['endereco'], htmlentities($_GET['addr']))) {
@@ -41,8 +41,8 @@
 							<input type="hidden" name="addr" value="<?php echo $_GET['addr']; ?>" />
 							<input type="submit" name="den_perfil" value="Denunciar Perfil" />
 							<?php }}}else { ?>
-							<a class="btn5" href="index.php?ref=Boletim">Ir para Configurações</a><br /><br />
-							<a class="btn5" href="index.php?ref=Boletim&addr=<?php echo $_GET['addr']; ?>">Ver meus boletins</a>
+							<a class="btn5" href="index.php?ref=Boletim">Ir para Configurações</a><br /><br /><br />
+							<a class="btn5" href="index.php?ref=Boletim&addr=<?php echo $_GET['addr']; ?>">Ver meus boletins</a><br /><br /><br />
 							<br /><br />
 							<?php } ?>
 						</fieldset>
@@ -77,14 +77,15 @@
 					</div>
 					<div style="clear: both;"></div>
 				</article>
+				
 				<!-- article class="content blue">
 					<h1>Albuns</h1>
-					<span class="btn1" onclick="abrirAba(2);"></span>
+					<span class="btn1" onclick="abrirAba(3);"></span>
 					<div style="display: none;" class="hide">
 					
 						<a href="#"><div class="album-photo">
 							<figure>
-								<img src="img/bg.jpg" alt="">
+								<img src="_img/bg.jpg" alt="">
 								<figcaption>
 									Album 001
 								</figcaption>
@@ -93,7 +94,7 @@
 						
 						<a href="#"><div class="album-photo">
 							<figure>
-								<img src="img/bg.jpg" alt="">
+								<img src="_img/bg.jpg" alt="">
 								<figcaption>
 									Album 001
 								</figcaption>
@@ -102,7 +103,7 @@
 						
 						<a href="#"><div class="album-photo">
 							<figure>
-								<img src="img/bg.jpg" alt="">
+								<img src="_img/bg.jpg" alt="">
 								<figcaption>
 									Album 001
 								</figcaption>
@@ -111,7 +112,7 @@
 						
 						<a href="#"><div class="album-photo">
 							<figure>
-								<img src="img/bg.jpg" alt="">
+								<img src="_img/bg.jpg" alt="">
 								<figcaption>
 									Album 001
 								</figcaption>
@@ -120,7 +121,7 @@
 						
 						<a href="#"><div class="album-photo">
 							<figure>
-								<img src="img/bg.jpg" alt="">
+								<img src="_img/bg.jpg" alt="">
 								<figcaption>
 									Album 001
 								</figcaption>

@@ -35,7 +35,7 @@
 						<?php if($addr != $_SESSION['endereco'] && isset($_GET['addr'])) {?>
 							<li><a href="index.php">Talk</a></li>
 					<?php }}else {
-						if($_GET['ref'] == "Perfil") {
+						if($_GET['ref'] == "Perfil" && $ctrlUsuario->isSolicitado($_SESSION['endereco'], (isset($_GET['addr'])))) {
 							?><li><a href="index.php">Request friendship</a></li>
 					<?php }} ?>
 					<li><a href="index.php?ref=Notifications">Notifications<?php echo ($ctrlNotificacao->getNotificacoes($_SESSION['id']) != 0 )?"(".$ctrlNotificacao->getNotificacoes($_SESSION['id']).")":''; ?></a></li>
@@ -46,7 +46,7 @@
 			</div>
 				
 				<div class="user-name"><?php echo $text_center; ?></div>
-				<div id="scrollUp" onclick="$('.global-nav').css('height', '100px');$('.container, #scrollUp, .user-name').css('display', 'none');$('.container').slideDown(500)"></div>
+				<div id="scrollUp" onclick="$('.global-nav').css('height', '100px');$('.global-nav').css('background', 'none');$('.container, #scrollUp, .user-name').css('display', 'none');$('.container').slideDown(500)"></div>
 				
 		</nav>
 			<?php
@@ -60,7 +60,7 @@
 			</a>
 				
 				<div class="user-name"><?php echo $text_center; ?></div>
-				<div id="scrollUp" onclick="$('.global-nav').css('height', '100px');$('.container, #scrollUp, .user-name').css('display', 'none');$('.container').slideDown(500)"></div>
+				<div id="scrollUp" onclick="$('.global-nav').css('height', '100px');$('.global-nav').css('background', 'none');$('.container, #scrollUp, .user-name').css('display', 'none');$('.container').slideDown(500)"></div>
 				
 			</nav>
 			<?php

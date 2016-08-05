@@ -1,6 +1,6 @@
 		<footer class="footer">
-			<div class="float-right">Copyright &copy; 2015 - <?php echo date("Y"); ?> | All rights reserved to <a href="#">OverHead</a></div>
-			<div class="float-left">
+			<div class="copy">Copyright &copy; 2015 - <?php echo date("Y"); ?> | All rights reserved to <a href="#">OverHead</a></div>
+			<div class="bottom-menu">
 				<p>-- Menu --</p>
 				<ul>
 					<li><a href="index.php">Home Page</a></li>
