@@ -1,6 +1,8 @@
 Bulletin
 Open-Source Social network project
 
+Copyright 2016 - Apache 2.0 License
+
 1. What is
 Bulletin is an open-source social network focused on photos and videos and posting style.
 

@@ -33,11 +33,12 @@
 					
 					<?php if($ctrlUsuario->isAmigo($_SESSION['endereco'], (isset($_GET['addr']))?$_GET['addr']:"")) {?>
 						<?php if($addr != $_SESSION['endereco'] && isset($_GET['addr'])) {?>
-							<li><a href="index.php">Talk</a></li>
+							<li><a href="index.php?ref=Talk&addr=<?php echo $_GET['addr']; ?>">Talk</a></li>
 					<?php }}else {
 						if($_GET['ref'] == "Perfil" && $ctrlUsuario->isSolicitado($_SESSION['endereco'], (isset($_GET['addr'])))) {
 							?><li><a href="index.php">Request friendship</a></li>
 					<?php }} ?>
+					<li><a href="index.php?ref=Messages">Messages</a></li>
 					<li><a href="index.php?ref=Notifications">Notifications<?php echo ($ctrlNotificacao->getNotificacoes($_SESSION['id']) != 0 )?"(".$ctrlNotificacao->getNotificacoes($_SESSION['id']).")":''; ?></a></li>
 					<li><a href="index.php?ref=Home Page">Bulletins <?php echo ($ctrlPublicacao->bulletinNaoVistos($_SESSION['id']) != 0 )?"(".$ctrlPublicacao->bulletinNaoVistos($_SESSION['id']).")":''; ?></a></li>
 					<li><a href="index.php?ref=Settings">Settings</a></li>

@@ -32,10 +32,10 @@
 			<nav class="global-menu">
 			<div class="btn-0"></div>
 				<ul>
-					<li><a href="index.html" >Sobre o Bulletin</a></li>
-					<li><a href="termos.html" >Termos de Uso</a></li>
-					<li><a href="privacidade.html" >Políticas de Privacidade</a></li>
-					<li><a href="../../index.php" >Página Inicial</a></li>
+					<li><a href="index.html" >About the Bulletin</a></li>
+					<li><a href="terms.html" >Terms of use</a></li>
+					<li><a href="privacy.html" >Privacy Policy</a></li>
+					<li><a href="../../index.php" >Home Page</a></li>
 				</ul>
 			</nav>
 		</header>

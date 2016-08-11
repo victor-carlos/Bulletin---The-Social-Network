@@ -1,5 +1,5 @@
 		<footer class="footer">
-			<div class="copy">Copyright &copy; 2015 - <?php echo date("Y"); ?> | All rights reserved to <a href="#">OverHead</a></div>
+			<div class="copy">Copyright &copy; 2015 - <?php echo date("Y"); ?> | <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0 License</a> -  All rights reserved.</div>
 			<div class="bottom-menu">
 				<p>-- Menu --</p>
 				<ul>
